@@ -1,0 +1,189 @@
+{    
+	"switchs" : {
+        "File" : {
+            "PipeOpen" : true,
+            "PipeCreate" : true,
+            "MailslotOpen" : true,
+            "MailslotCreate" : true,
+            "StreamOpen" : true,
+            "StreamCreate" : true,
+            "RawAccessOpen" : true,
+            "FileCreated" : true,
+            "FileSuperseded" : true,
+            "FileOverwritten" : true,
+            "FileSystemControl" : true,
+            "DeviceControl" : true,
+            "FileDeleted" : true,
+            "FileRenamed" : true,
+            "FileImpersonate" : true,
+            "FileOpenById" : true,
+            "FileHardlinkCreate" : true,
+            "Section" : true
+        },
+        "Registry" : {
+            "LoadKey" : true,
+            "UnLoadKey" : true,
+            "RestoreKey" : true,
+            "SaveKey" : true,
+            "ReplaceKey" : true,
+            "CreateKey" : true,
+            "DeleteKey" : true,
+            "RenameKey" : true,
+            "SetValueKey" : true,
+            "DeleteValueKey" : true
+        },
+        "Network" : {
+            "Arp" : true,
+            "Icmp" : true,
+            "Listen" : true,
+            "Accept" : true,
+            "Connect" : true
+        },
+        "Process" : {
+            "ProcessAccess" : true,
+            "ThreadAccess" : true,
+            "DesktopAccess" : true,
+            "ThreadStart" : true,
+            "LoadImage" : true,
+            "ProcessStart" : true
+        }
+    },
+    
+    "rules" : {
+		"CreateKey" : [
+			{
+                "RuleName" : "Block KeyPath == \\REGISTRY\\MACHINE\\SOFTWARE\\test",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "KeyPath" : "\\REGISTRY\\MACHINE\\SOFTWARE\\test"
+                    }
+                ]
+            }			
+		],
+        "ProcessAccess" : [
+            {
+                "RuleName" : "Block terminate WinMon.exe",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessTargetPath" : "\\WinMon.exe"
+                    }
+                ]
+            }
+        ],
+        "ProcessStart" : [
+            {
+                "RuleName" : "Block process start",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessPath" : "\\NoProcessStart.exe"
+                    },
+                    {
+                        "Condition" : "IS",
+                        "IsCreate" : true
+                    }
+                ]
+            }
+        ],
+        "Icmp" : [
+            {
+                "RuleName" : "Block RemoteIPv4 == 122.228.15.230",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "RemoteIPv4" : "122.228.15.230"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Block RemoteIPv6 == 240e:f7:e000:1200:3::15",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "RemoteIPv6" : "240e:f7:e000:1200:3::15"
+                    }
+                ]
+            }
+        ],
+        "Connect" : [
+            {
+                "RuleName" : "Block Protocol == TCP && RemoteIPv4 == 180.101.50.188 && RemotePort == 443",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Protocol" : 6
+                    },
+                    {
+                        "Condition" : "IS",
+                        "RemoteIPv4" : "180.101.50.188"
+                    },
+                    {
+                        "Condition" : "IS",
+                        "RemotePort" : 443
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Block Protocol == TCP && RemoteIPv6 == 240e:e9:6002:15a:0:ff:b05c:1278 && RemotePort == 443",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Protocol" : 6
+                    },
+                    {
+                        "Condition" : "IS",
+                        "RemoteIPv6" : "240e:e9:6002:15a:0:ff:b05c:1278"
+                    },
+                    {
+                        "Condition" : "IS",
+                        "RemotePort" : 443
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Block Protocol == TCP && RemoteIPv4 == 36.27.222.246/16 && RemotePort > 79 && RemotePort < 444",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Protocol" : 6
+                    },
+                    {
+                        "Condition" : "IPv4SubNetMask",
+                        "RemoteIPv4" : "36.27.222.246/16"
+                    },
+                    {
+                        "Condition" : "MoreThan",
+                        "RemotePort" : 79
+                    },
+                    {
+                        "Condition" : "LessThan",
+                        "RemotePort" : 444
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Block Protocol == TCP && RemoteIPv6 == 240e:f7:e700:1fd::130/64 && RemotePort > 79 && RemotePort < 444",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Protocol" : 6
+                    },
+                    {
+                        "Condition" : "IPv6SubNetPrefix",
+                        "RemoteIPv6" : "240e:f7:e700:1fd::130/64"
+                    },
+                    {
+                        "Condition" : "MoreThan",
+                        "RemotePort" : 79
+                    },
+                    {
+                        "Condition" : "LessThan",
+                        "RemotePort" : 444
+                    }
+                ]
+            }
+        ]
+    }
+}
