@@ -1,0 +1,994 @@
+{
+    "switchs" : {
+        "File" : {
+            "PipeOpen" : true,
+            "PipeCreate" : true,
+            "MailslotOpen" : true,
+            "MailslotCreate" : true,
+            "StreamOpen" : true,
+            "StreamCreate" : true,
+            "RawAccessOpen" : true,
+            "FileCreated" : true,
+            "FileSuperseded" : true,
+            "FileOverwritten" : true,
+            "FileSystemControl" : true,
+            "DeviceControl" : true,
+            "FileDeleted" : true,
+            "FileRenamed" : true,
+            "FileImpersonate" : true,
+            "FileOpenById" : true,
+            "FileHardlinkCreate" : true,
+            "Section" : true
+        },
+        "Registry" : {
+            "LoadKey" : true,
+            "UnLoadKey" : true,
+            "RestoreKey" : true,
+            "SaveKey" : true,
+            "ReplaceKey" : true,
+            "CreateKey" : true,
+            "DeleteKey" : true,
+            "RenameKey" : true,
+            "SetValueKey" : true,
+            "DeleteValueKey" : true
+        },
+        "Network" : {
+            "Arp" : true,
+            "Icmp" : true,
+            "Listen" : true,
+            "Accept" : true,
+            "Connect" : true
+        },
+        "Process" : {
+            "ProcessAccess" : true,
+            "ThreadAccess" : true,
+            "DesktopAccess" : true,
+            "ThreadStart" : true,
+            "LoadImage" : true,
+            "ProcessStart" : true
+        },
+        "Dns" : {
+            "A" : true,
+            "AAAA" : true,
+            "PTR" : true,
+            "SRV" : true
+        },
+        "Ti" : {
+            "ProtectVmLocal" : false,
+            "ProtectVmRemote" : false,
+            "ProtectVmLocalKernelCaller" : true,
+            "AllocVmLocal" : false,
+            "AllocVmRemote" : true,
+            "AllocVmLocalKernelCaller" : true,
+            "MapViewLocal" : true,
+            "ReadVmRemote" : false,
+            "WriteVmRemote" : false,
+            "WriteVmLocal" : true,
+            "DeviceObjectLoad" : true,
+            "DeviceObjectUnload" : true,
+            "DriverObjectLoad" : true,
+			"SuspendThread" : true,
+            "ResumeThread" : true,
+            "QueueUserApcRemoteKernelCaller" : true,
+            "QueueUserApcRemote" : true
+        }
+    },
+    
+    "rules" : {
+        "PipeOpen":[
+        
+        ],
+        "DeviceControl" : [
+            {
+                "RuleName" : "Exclude IOCTL_STORAGE_QUERY_PROPERTY",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "IoControlCode" : 2954240
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude IOCTL_MOUNTDEV_QUERY_DEVICE_NAME",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "IoControlCode" : 5046280
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude IOCTL_DISK_GET_DRIVE_GEOMETRY_EX",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "IoControlCode" : 458912
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude IOCTL_DISK_GET_LENGTH_INFO",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "IoControlCode" : 475228
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude IOCTL_DISK_GET_CACHE_INFORMATION",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "IoControlCode" : 475348
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude IOCTL_DISK_GET_PARTITION_INFO_EX",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "IoControlCode" : 458824
+                    }
+                ]
+            }
+        ],
+        "FileSystemControl":[
+            {
+                "RuleName" : "Exclude FSCTL_QUERY_FILE_REGIONS",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 590468
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_GET_VOLUME_BITMAP",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 589935
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude FSCTL_READ_USN_JOURNAL",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 590011
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude FSCTL_GET_EXTERNAL_BACKING",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 590608
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_GET_RETRIEVAL_POINTERS",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 589939
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_QUERY_FILE_LAYOUT",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 590455
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_MOVE_FILE",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 589940
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_REQUEST_OPLOCK",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 590400
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_GET_REPARSE_POINT",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 589992
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_GET_COMPRESSION",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 589884
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_READ_FILE_USN_DATA",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 590059
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_GET_OBJECT_ID",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 589980
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_QUERY_USN_JOURNAL",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 590068
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_FILE_PREFETCH",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 590112
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_SET_COMPRESSION",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 639040
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_WRITE_USN_CLOSE_RECORD",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 590063
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_SET_EXTERNAL_BACKING",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 590604
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude FSCTL_GET_NTFS_VOLUME_DATA",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 589924
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude FSCTL_GET_NTFS_FILE_RECORD",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 589928
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude FSCTL_PIPE_PEEK",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "FsControlCode" : 1130508
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude \\Device\\NamedPipe\\wkssvc",
+                "Conditions" : [
+                    {
+                        "Condition" : "is",
+                        "FilePath" : "\\Device\\NamedPipe\\wkssvc"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude \\Device\\NamedPipe\\srvsvc",
+                "Conditions" : [
+                    {
+                        "Condition" : "is",
+                        "FilePath" : "\\Device\\NamedPipe\\srvsvc"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude \\Device\\NamedPipe\\MsFteWds",
+                "Conditions" : [
+                    {
+                        "Condition" : "is",
+                        "FilePath" : "\\Device\\NamedPipe\\MsFteWds"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude MsMpEng",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessPath" : "\\MsMpEng.exe"
+                    }
+                ]
+            }
+        ],
+        "FileImpersonate":[
+            {
+                "RuleName" : "Include (FILE_WRITE_DATA | FILE_ADD_FILE) | (FILE_APPEND_DATA | FILE_ADD_SUBDIRECTORY | FILE_CREATE_PIPE_INSTANCE) | FILE_WRITE_EA | FILE_DELETE_CHILD | FILE_WRITE_ATTRIBUTES | DELETE | WRITE_DAC | WRITE_OWNER | MAXIMUM_ALLOWED | GENERIC_WRITE | GENERIC_ALL",
+                "Conditions" : [
+                    {
+                        "Condition" : "BitAndNot",
+                        "DesiredAccess" : 1376584022
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude \\Device\\NamedPipe\\wkssvc",
+                "Conditions" : [
+                    {
+                        "Condition" : "is",
+                        "FilePath" : "\\Device\\NamedPipe\\wkssvc"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude \\Device\\NamedPipe\\srvsvc",
+                "Conditions" : [
+                    {
+                        "Condition" : "is",
+                        "FilePath" : "\\Device\\NamedPipe\\srvsvc"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude TiWorker",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessPath" : "\\TiWorker.exe"
+                    }
+                ]
+            }
+        ],
+        "FileOpenById" : [
+            {
+                "RuleName" : "Exclude \\$Extend\\$Deleted",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "FilePath" : "\\$Extend\\$Deleted"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude svchost.exe",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessPath" : "\\svchost.exe"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude MsMpEng.exe",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessPath" : "\\MsMpEng.exe"
+                    }
+                ]
+            }
+        ],
+        "FileDeleted" : [
+            {
+                "RuleName" : "Exclude Directory",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "IsDirectory" : true
+                    }
+                ]
+            }
+        ],
+        "FileCreated" : [
+            {
+                "RuleName" : "Exclude Directory",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "IsDirectory" : true
+                    }
+                ]
+            }
+        ],
+        "Section":[
+            {
+                "RuleName" : "Exclude PageProtection == 0",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "PageProtection" : 0
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude SyncTypeOther",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Type" : 0
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Include PAGE_EXECUTE | PAGE_EXECUTE_READ | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY | PAGE_GRAPHICS_EXECUTE | PAGE_GRAPHICS_EXECUTE_READ | PAGE_GRAPHICS_EXECUTE_READWRITE",
+                "Conditions" : [
+                    {
+                        "Condition" : "BitAndNot",
+                        "PageProtection" : 114928
+                    }
+                ]
+            }
+        ],
+        "SetValueKey":[
+            {
+                "RuleName" : "Exclude explorer",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessPath" : "\\explorer.exe"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude SearchIndexer",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessPath" : "\\SearchIndexer.exe"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude svchost",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessPath" : "\\svchost.exe"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude taskhostw",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessPath" : "\\taskhostw.exe"
+                    }
+                ]
+            }
+        ],
+        "DesktopAccess":[
+            {
+                "RuleName" : "Exclude Taskmgr",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessPath" : "\\Taskmgr.exe"
+                    }
+                ]
+            }
+        ],
+        "ThreadAccess":[
+            {
+                "RuleName" : "Include THREAD_TERMINATE | THREAD_SUSPEND_RESUME | THREAD_SET_CONTEXT | THREAD_SET_INFORMATION | THREAD_SET_THREAD_TOKEN | THREAD_IMPERSONATE | THREAD_DIRECT_IMPERSONATION | THREAD_SET_LIMITED_INFORMATION | THREAD_RESUME | DELETE | WRITE_DAC | WRITE_OWNER | MAXIMUM_ALLOWED | GENERIC_WRITE | GENERIC_ALL",
+                "Conditions" : [
+                    {
+                        "Condition" : "BitAndNot",
+                        "DesiredAccess" : 1376589747
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude SourceProcessId == 4",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "SourceProcessId" : 4
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude Microsoft Windows",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Windows"
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude Microsoft Windows Publisher",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Windows Publisher"
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude Microsoft Corporation",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Corporation"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude msedge",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessSourcePath" : "\\msedge.exe"
+                    }
+                ]
+            }
+        ],
+        "ProcessAccess" : [
+            {
+                "RuleName" : "Exclude DesiredAccess == 0",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "DesiredAccess" : 0
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Include PROCESS_TERMINATE | PROCESS_CREATE_THREAD | PROCESS_SET_SESSIONID | PROCESS_VM_OPERATION | PROCESS_VM_WRITE | PROCESS_DUP_HANDLE | PROCESS_CREATE_PROCESS | PROCESS_SET_QUOTA | PROCESS_SET_INFORMATION | PROCESS_SUSPEND_RESUME | DELETE | WRITE_DAC | WRITE_OWNER | MAXIMUM_ALLOWED | GENERIC_WRITE | GENERIC_ALL",
+                "Conditions" : [
+                    {
+                        "Condition" : "BitAndNot",
+                        "DesiredAccess" : 1376586735
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude Microsoft Windows",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Windows"
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude Microsoft Windows Publisher",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Windows Publisher"
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude Microsoft Corporation",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Corporation"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "exclude ProcessHacker.exe",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessSourcePath" : "\\ProcessHacker.exe"
+                    }
+                ]
+            }
+        ],
+        "ThreadStart" : [
+            {
+                "RuleName" : "Exclude ThreadExit",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "IsCreate" : false
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude \\System32\\ntdll.dll && \\SysWOW64\\ntdll.dll",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "Image" : "\\ntdll.dll"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude wbemcore.dll",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "Image" : "\\wbemcore.dll"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude clr.dll",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "Image" : "\\clr.dll"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude SHCore.dll",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "Image" : "\\SHCore.dll"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude combase.dll",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "Image" : "\\combase.dll"
+                    }
+                ]
+            }
+        ],
+        "LoadImage" : [
+            {
+                "RuleName" : "Exclude Microsoft Windows",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Windows"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude Microsoft Corporation",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Corporation"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude Microsoft Windows Hardware Compatibility Publisher",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Windows Hardware Compatibility Publisher"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude Microsoft Windows Software Compatibility Publisher",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Windows Software Compatibility Publisher"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude Microsoft Windows 3rd party Component",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Windows 3rd party Component"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude Microsoft 3rd Party Application Component",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft 3rd Party Application Component"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude .NET",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : ".NET"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude Microsoft Dynamic Code Publisher",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Dynamic Code Publisher"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude Microsoft Windows Publisher",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Microsoft Windows Publisher"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude Windows Phone",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "Subject" : "Windows Phone"
+                    }
+                ]
+            }
+        ],
+        "ProcessTampering":[
+        
+        ],
+        "Accept" : [
+            {
+                "RuleName" : "Exclude 137",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "LocalPort" : 137
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude 138",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "LocalPort" : 138
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude 1900",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "LocalPort" : 1900
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude 5353",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "LocalPort" : 5353
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude 5355",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "LocalPort" : 5355
+                    }
+                ]
+            }
+        ],
+        "Connect" : [
+            {
+                "RuleName" : "Exclude 53",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "RemotePort" : 53
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude 5353",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "RemotePort" : 5353
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude 5355",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "RemotePort" : 5355
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude 137",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "RemotePort" : 137
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude 138",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "RemotePort" : 138
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude 1900",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "RemotePort" : 1900
+                    }
+                ]
+            }
+        ]
+    },
+
+    "Etw" : {
+        "DNS_A" : [
+            {
+                "RuleName" : "Include QueryStatus == 0",
+                "Conditions" : [
+                    {
+                        "Condition" : "IsNot",
+                        "QueryStatus" : 0
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude QueryName == localhost",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "QueryName" : "localhost"
+                    }
+                ]
+            }
+        ],
+        "DNS_AAAA" : [
+            {
+                "RuleName" : "Include QueryStatus == 0",
+                "Conditions" : [
+                    {
+                        "Condition" : "IsNot",
+                        "QueryStatus" : 0
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude QueryName == localhost",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "QueryName" : "localhost"
+                    }
+                ]
+            }
+        ],
+        "AllocVmLocal" : [
+            {
+                "RuleName" : "Exclude msedge.exe",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessName" : "\\msedge.exe"
+                    }
+                ]
+            }
+        ],
+        "ProtectVmLocal" : [
+            {
+                "RuleName" : "Exclude PAGE_READWRITE",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "ProtectionMask" : 4
+                    }
+                ]
+            },
+			{
+                "RuleName" : "Exclude CallingProcessProtection == PsProtectedSignerAntimalware + PsProtectedTypeProtectedLight",
+                "Conditions" : [
+                    {
+                        "Condition" : "IS",
+                        "CallingProcessProtection" : 49
+                    }
+                ]
+            }
+        ],
+        "ProtectVmRemote" : [
+            {
+                "RuleName" : "Exclude msedge.exe",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessName" : "\\msedge.exe"
+                    }
+                ]
+            }
+        ],
+        "ReadVmRemote" : [
+            {
+                "RuleName" : "Exclude procexp.exe",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessName" : "\\procexp.exe"
+                    }
+                ]
+            },
+            {
+                "RuleName" : "Exclude ProcessHacker.exe",
+                "Conditions" : [
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessName" : "\\ProcessHacker.exe"
+                    }
+                ]
+            }
+        ]
+    }
+}
