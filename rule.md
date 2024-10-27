@@ -103,7 +103,7 @@ DriverObjectLoad
 SuspendThread  
 ResumeThread  
 
-QuwuwUserApcRemoteKernelCaller  
+QueueUserApcRemoteKernelCaller  
 QueueUserApcRemote  
 
 过滤条件是标准的ETW TI选项，尽管有好几个版本。
