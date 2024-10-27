@@ -11,7 +11,8 @@ Windows Monitor
 6. 尽量实现阻断的功能。
 7. 无GUI。
 8. 支持Windows 7 SP1(Windows server 2008 R2)及以后的版本.
-9. 使用需授权，且有信息（一条）收集（如果联网的话）到服务器（debian + nginx + php + mysql）。
+9. 使用需授权：SHA512 + ECDSA_P521，在驱动验签。
+10. 收集（如果联网的话）信息（一条）到服务器（debian + nginx + php + mysql）。
 
 具体的功能：
 1. ICMP，ARP，RARP通讯的进程信息。没有关联进程信息的也显示。  
@@ -29,14 +30,14 @@ Windows Monitor
    如：ProcessTampering，herpaderp，hollow。  
 9. 权限，令牌，用户，登录相关的，想想。
 10. DNSLOG.  
-11. ETW-TI(ThreatIntelligence).这个有点占用CPU。
+11. ETW-TI(ThreatIntelligence)。VIP版本才有的功能，这个有点占用CPU。
 
 驱动附加功能（暂时没有添加）：
 1. 文件或目录的隐藏。  
 2. Key或KeyValue的隐藏。  
-3. TCP或UDP的端口的隐藏。  
-4. TLS Client:下载一个文件。提供接口，驱动和应用层的。害怕文件被报毒，文件可改为内存。  
-5. TLS Server:返回一个文件。可配置，包括端口和文件。  
+3. TCP或UDP的端口的隐藏。VIP版本才有的功能。  
+4. TLS Client。VIP版本才有的功能。  
+5. TLS Server。VIP版本才有的功能。  
 
 应用层的附加功能（暂时没有添加）：
 1. WMI。
