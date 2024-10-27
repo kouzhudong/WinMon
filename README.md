@@ -1,7 +1,7 @@
 # WinMon
 Windows Monitor
 
-设计目标：
+### 设计目标：
 1. Procmon.exe有的，这里一般不添加，除非它识别的不友好。这个程序不能长时间运行。  
    不一定比Procmon好用，但一定比Procmon有用（特别对于特别的，稀少的查询和阻断）。  
 2. Sysmon.exe有的一般都添加。
@@ -14,7 +14,7 @@ Windows Monitor
 9. 使用需授权：SHA512 + ECDSA_P521，在驱动验签。
 10. 收集（如果联网的话）信息（一条）到服务器（debian + nginx + php + mysql）。
 
-具体的功能：
+### 具体的功能：
 1. ICMP，ARP，RARP通讯的进程信息。没有关联进程信息的也显示。  
    既非IPv4也不是IPv6的网络信息。用WFP实现。  
 2. Obmon。监控进程，线程，桌面的访问。  
@@ -32,26 +32,26 @@ Windows Monitor
 10. DNSLOG.  
 11. ETW-TI(ThreatIntelligence)。VIP版本才有的功能，这个有点占用CPU。
 
-驱动附加功能（暂时没有添加）：
+### 驱动附加功能（暂时没有添加）：
 1. 文件或目录的隐藏。  
 2. Key或KeyValue的隐藏。  
 3. TCP或UDP的端口的隐藏。VIP版本才有的功能。  
 4. TLS Client。VIP版本才有的功能。  
 5. TLS Server。VIP版本才有的功能。  
 
-应用层的附加功能（暂时没有添加）：
+### 应用层的附加功能（暂时没有添加）：
 1. WMI。
 2. 剪切板。
 3. USB 放弃
 
-日志类型：
+### 日志类型：
 1. 少许信息Dbgview.exe输出。
 2. 机密信息使用WPP，用traceview.exe查看。
 3. 启动信息（exe/sys的日志系统初始化之前）在事件查看器。
 4. 驱动日志在：%systemdrive%\winmon目录下。
 5. winmon.exe的日志在：这个文件所在目录的log目录下。
 
-设计框架：
+### 设计框架：
 1. 驱动采集信息并阻断。如：minifilter，wfp，以及各种回调，附加设备进行过滤等。
 2. 应用层采集部分信息。如：ETW。
 3. 应用层封装一个DLL。对外提供服务。
