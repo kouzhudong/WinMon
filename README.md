@@ -28,9 +28,9 @@ Windows Monitor Blocker Hider
    这里承诺只能拦截自己能拦截的，不是保证所有的。  
 8. 进程的特殊启动（有待实现）。  
    如：ProcessTampering，herpaderp，hollow。  
-9. 权限，令牌，用户，登录相关的，想想。
+9. 各类隐藏。针对普通的应用层的查询，不包括对抗ARK。  
 10. DNSLOG.  
-11. ETW-TI(ThreatIntelligence)。这个有点占用CPU。
+11. ETW-TI(ThreatIntelligence)。这个有点占用CPU。  
 
 ### 日志类型：
 1. 少许信息Dbgview.exe输出。
@@ -51,7 +51,6 @@ Windows Monitor Blocker Hider
 9. 开关加持便于控制CPU，内存，磁盘，网速等。
 
 ### 版本功能
-
 | 功能 | FREE版本 | VIP版本 |
 | :--- | :--- | :--- |
 | 驱动采集 | 有 | 有 |
@@ -62,6 +61,7 @@ Windows Monitor Blocker Hider
 | 注册表隐藏 | 有 |有 |
 | 端口隐藏 | 无 | 有 |
 | 进程隐藏 | 无 | 有 |
+| 线程隐藏 | 无 | 有 |
 | 驱动隐藏 | 无 | 有 |
 | 模块隐藏 | 无 | 有 |
 | WSK + TLS 客户端 | 有 | 有 |
