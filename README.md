@@ -1,5 +1,5 @@
 # WinMon
-Windows Monitor
+Windows Monitor Blocker Hider
 
 ### 设计目标：
 1. Procmon.exe有的，这里一般不添加，除非它识别的不友好。这个程序不能长时间运行。  
