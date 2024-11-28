@@ -30,19 +30,7 @@ Windows Monitor
    如：ProcessTampering，herpaderp，hollow。  
 9. 权限，令牌，用户，登录相关的，想想。
 10. DNSLOG.  
-11. ETW-TI(ThreatIntelligence)。VIP版本才有的功能，这个有点占用CPU。
-
-### 驱动附加功能（暂时没有添加）：
-1. 文件或目录的隐藏。  
-2. Key或KeyValue的隐藏。  
-3. TCP或UDP的端口的隐藏。VIP版本才有的功能。  
-4. TLS Client。VIP版本才有的功能。  
-5. TLS Server。VIP版本才有的功能。  
-
-### 应用层的附加功能（暂时没有添加）：
-1. WMI。
-2. 剪切板。
-3. USB 放弃
+11. ETW-TI(ThreatIntelligence)。这个有点占用CPU。
 
 ### 日志类型：
 1. 少许信息Dbgview.exe输出。
