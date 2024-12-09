@@ -17,7 +17,7 @@ def EnumSqlite(file):
 
     list = sorted(key.items(), key = lambda k:(k[1], k[0]), reverse = True) 
     for it in list:
-        print(f"{it[0]:19} {it[1]:<9}")
+        print(f"{it[0]:31} {it[1]:<9}")
 
     cur.close()
     con.close()
@@ -27,7 +27,7 @@ def main():
         for entry in it:
             if fnmatch.fnmatch(entry.name, '*.db') and entry.is_file():              
                 EnumSqlite(entry.name)
-                print("------------------------------------")
+                print("---------------------------------------------")
 
 if __name__ == '__main__':
     main()
