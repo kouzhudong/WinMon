@@ -3,7 +3,7 @@ Signature   = "$Windows NT$"
 Class = "AntiVirus"
 ClassGuid = {b1d1a169-c54f-4379-81db-bee7d88d7454}
 Provider    = %ManufacturerName%
-DriverVer = 12/09/2024,10.7.20.102
+DriverVer = 12/09/2024,11.1.20.702
 CatalogFile = WinMon.cat
 PnpLockDown=1
 
