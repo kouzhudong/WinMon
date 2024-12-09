@@ -3,7 +3,7 @@ Signature   = "$Windows NT$"
 Class = "AntiVirus"
 ClassGuid = {b1d1a169-c54f-4379-81db-bee7d88d7454}
 Provider    = %ManufacturerName%
-DriverVer = 10/24/2024,12.53.22.84
+DriverVer = 12/09/2024,10.7.20.102
 CatalogFile = WinMon.cat
 PnpLockDown=1
 
@@ -108,5 +108,5 @@ DiskId1                 = "WinMon Device Installation Disk"
 ;Instances specific information.
 DefaultInstance         = "WinMon Instance"
 Instance1.Name          = "WinMon Instance"
-Instance1.Altitude      = "329999"
+Instance1.Altitude      = "329999.9"
 Instance1.Flags         = 0x0              ; Allow all attachments
