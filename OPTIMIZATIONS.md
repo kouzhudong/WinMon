@@ -104,6 +104,24 @@ All changes have been validated:
 
 1. `/bin/amd64/Debug/config/LogRule.json` - Optimized configuration
 2. `/bin/x86/Debug/config/LogRule.json` - Optimized configuration (identical to amd64)
+3. `/bin/amd64/Debug/config/BlockRule.json` - Optimized rule condition ordering
+4. `/bin/x86/Debug/config/BlockRule.json` - Optimized rule condition ordering (identical to amd64)
+
+## BlockRule.json Optimizations
+
+### Optimized Condition Ordering
+**Issue**: Conditions were not ordered optimally for performance
+**Impact**: More expensive operations evaluated before cheaper ones
+**Fix**: Reordered conditions to evaluate in order of increasing cost:
+1. Protocol checks (simple integer comparison) - cheapest
+2. Port checks (integer comparison or range)
+3. IP address checks (string/subnet operations) - most expensive
+
+**Sections optimized**:
+- **ProcessStart**: Moved IsCreate (boolean) before ProcessPath (string EndWith)
+- **Connect**: Reordered all 4 rules to check Protocol → RemotePort → IP address
+
+**Performance benefit**: Conditions that fail will fail faster, avoiding expensive IP address comparisons when possible
 
 ## Future Optimization Opportunities
 
