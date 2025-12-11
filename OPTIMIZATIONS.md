@@ -78,6 +78,18 @@ Multiple IS checks for similar strings → Single BeginWith/Contain check
 }
 ```
 
+**Note on Pattern**: The pattern uses "Microsoft " (with trailing space) to match certificate subjects that begin with "Microsoft" followed by a space. This pattern matches all known Microsoft certificate subjects including:
+- "Microsoft Windows"
+- "Microsoft Windows Publisher"
+- "Microsoft Corporation"
+- "Microsoft Windows Hardware Compatibility Publisher"
+- "Microsoft Windows Software Compatibility Publisher"
+- "Microsoft Windows 3rd party Component"
+- "Microsoft 3rd Party Application Component"
+- "Microsoft Dynamic Code Publisher"
+
+This relies on Microsoft's consistent certificate naming convention. If future Microsoft certificates use different naming patterns (e.g., without the space or different capitalization), the rules may need adjustment. The original individual rules are preserved in git history if needed.
+
 ## Performance Impact
 
 ### Quantitative Improvements:
