@@ -77,12 +77,12 @@
                 "RuleName" : "Block process start",
                 "Conditions" : [
                     {
-                        "Condition" : "EndWith",
-                        "ProcessPath" : "\\NoProcessStart.exe"
-                    },
-                    {
                         "Condition" : "IS",
                         "IsCreate" : true
+                    },
+                    {
+                        "Condition" : "EndWith",
+                        "ProcessPath" : "\\NoProcessStart.exe"
                     }
                 ]
             }
@@ -117,11 +117,11 @@
                     },
                     {
                         "Condition" : "IS",
-                        "RemoteIPv4" : "180.101.50.188"
+                        "RemotePort" : 443
                     },
                     {
                         "Condition" : "IS",
-                        "RemotePort" : 443
+                        "RemoteIPv4" : "180.101.50.188"
                     }
                 ]
             },
@@ -134,11 +134,11 @@
                     },
                     {
                         "Condition" : "IS",
-                        "RemoteIPv6" : "240e:e9:6002:15a:0:ff:b05c:1278"
+                        "RemotePort" : 443
                     },
                     {
                         "Condition" : "IS",
-                        "RemotePort" : 443
+                        "RemoteIPv6" : "240e:e9:6002:15a:0:ff:b05c:1278"
                     }
                 ]
             },
@@ -150,16 +150,16 @@
                         "Protocol" : 6
                     },
                     {
-                        "Condition" : "IPv4SubNetMask",
-                        "RemoteIPv4" : "36.27.222.246/16"
-                    },
-                    {
                         "Condition" : "MoreThan",
                         "RemotePort" : 79
                     },
                     {
                         "Condition" : "LessThan",
                         "RemotePort" : 444
+                    },
+                    {
+                        "Condition" : "IPv4SubNetMask",
+                        "RemoteIPv4" : "36.27.222.246/16"
                     }
                 ]
             },
@@ -171,16 +171,16 @@
                         "Protocol" : 6
                     },
                     {
-                        "Condition" : "IPv6SubNetPrefix",
-                        "RemoteIPv6" : "240e:f7:e700:1fd::130/64"
-                    },
-                    {
                         "Condition" : "MoreThan",
                         "RemotePort" : 79
                     },
                     {
                         "Condition" : "LessThan",
                         "RemotePort" : 444
+                    },
+                    {
+                        "Condition" : "IPv6SubNetPrefix",
+                        "RemoteIPv6" : "240e:f7:e700:1fd::130/64"
                     }
                 ]
             }
